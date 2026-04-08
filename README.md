@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🦞 CLAW CODE
-**The Blazing-Fast, Open-Source Claude Code Alternative built in Rust.**
+**The Blazing-Fast, Open-Source Claude Code Alternative (Built in Rust)**
 
 [![Rust](https://img.shields.io/badge/Built_with-Rust_🦀-f26522?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
@@ -18,54 +18,63 @@
 
 ---
 
-## ⚡ Why Claw Code?
+## 📖 What is this? (The Context)
 
-| Feature | Description |
+Recently, Anthropic released **Claude Code**—a powerful terminal-based AI assistant that can read your files, write code, run bash commands, and fix bugs autonomously right inside your CLI. 
+
+However, the official tool is closed-source and written in Node.js/TypeScript. 
+
+**Claw Code** is our answer to that. We rebuilt the exact same tool from the ground up using **Rust**. Our goal? To give developers an open-source, fully transparent, and heavily optimized version of the Claude CLI that you can run, modify, and hack on locally.
+
+---
+
+## ⚡ Why use Claw Code?
+
+| Feature | Plain English Description |
 | :--- | :--- |
-| **🚀 Unmatched Speed** | Written entirely in Rust. Near-zero startup time and minimal memory footprint compared to Node.js. |
-| **🛠️ Native Tools** | Built-in bash execution, native file read/write, fast grepping, and web fetching. |
-| **🔌 MCP Protocol** | Full support for the Model Context Protocol. Connect your own tools instantly. |
-| **🤖 Provider Agnostic** | Out-of-the-box Anthropic/OpenAI compatibility with smooth SSE streaming. |
-
-> [!NOTE]  
-> **Source of Truth:** Claw Code is the public Rust implementation of the `claw` CLI agent harness. The canonical implementation lives in [`rust/`](./rust). Make `claw doctor` your first health check after building!
+| **🚀 Lightning Fast** | Because it's written in Rust, it starts up instantly and uses way less memory than the official Node.js version. |
+| **🛠️ Your Terminal, Automated** | It can safely run bash commands, edit your files, search through your codebase, and pull data from the web. |
+| **🔌 Plug & Play Tools (MCP)** | Full support for the Model Context Protocol (MCP). Want it to talk to your database or Notion? Just connect a server. |
+| **🤖 Use Any AI Model** | Works perfectly with Anthropic and OpenAI API formats. Plus, smooth text streaming right in your terminal. |
 
 ---
 
 ## 💻 Quick Start
 
-Get up and running in under 60 seconds:
+Get your AI agent up and running in under 60 seconds.
 
+**1. Build the project:**
 ```bash
-# 1. Navigate to the workspace
 cd rust
-
-# 2. Build the lightning-fast binary
 cargo build --workspace
+```
 
-# 3. Ask it anything
+**2. Log in with your Anthropic Account:**
+```bash
+./target/debug/claw login
+```
+*(Alternatively, you can just set `export ANTHROPIC_API_KEY="sk-ant-..."`)*
+
+**3. Ask it to do something:**
+```bash
 ./target/debug/claw prompt "summarize this repository"
 ```
 
-### 🔐 Authentication
-Use your API key or the built-in OAuth flow:
-```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
-# OR run the interactive login:
-./target/debug/claw login
-```
+> **Note:** Make sure to run `./target/debug/claw doctor` as your first health check to ensure everything is set up correctly!
 
 ---
 
 <details>
-<summary><b>📂 Click to view Repository Architecture</b></summary>
+<summary><b>📂 Repository Breakdown (Click to expand)</b></summary>
 <br>
 
-- **`rust/`** — Canonical Rust workspace and the `claw` CLI binary
-- **`USAGE.md`** — Task-oriented usage guide for the current product surface
-- **`PARITY.md`** — Rust-port parity status and migration notes
-- **`ROADMAP.md`** — Active roadmap and cleanup backlog
-- **`PHILOSOPHY.md`** — Project intent and system-design framing
+If you want to poke around the code, here is where everything lives:
+
+- **`rust/`** — The actual codebase. This is where the magic happens and where the `claw` CLI is built.
+- **`USAGE.md`** — A simple guide on how to use the commands and features.
+- **`PARITY.md`** — A checklist showing how close we are to matching 100% of the official Claude Code's features.
+- **`ROADMAP.md`** — What we are building next.
+- **`PHILOSOPHY.md`** — Why we made this project and our design choices.
 
 </details>
 
@@ -73,13 +82,13 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 
 ## 🌍 The UltraWorkers Ecosystem
 
-Claw Code doesn't live in isolation. We are building the future of open-source agentic tooling:
+Claw Code doesn't live in isolation. We are building the future of open-source AI dev tools alongside:
 * 🦞 [clawhip](https://github.com/Yeachan-Heo/clawhip)
 * 🐙 [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
 * 🧠 [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
 * 👾 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
 
-Join the discussion in the **[UltraWorkers Discord](https://discord.gg/5TUQKqFWd)**!
+Want to contribute or just hang out? Join the discussion in the **[UltraWorkers Discord](https://discord.gg/5TUQKqFWd)**!
 
 ---
 
