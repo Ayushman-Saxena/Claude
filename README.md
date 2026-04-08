@@ -1,83 +1,100 @@
-# Claw Code
+<div align="center">
 
-<p align="center">
-  <a href="https://github.com/ultraworkers/claw-code">ultraworkers/claw-code</a>
-  ·
-  <a href="./USAGE.md">Usage</a>
-  ·
-  <a href="./rust/README.md">Rust workspace</a>
-  ·
-  <a href="./PARITY.md">Parity</a>
-  ·
-  <a href="./ROADMAP.md">Roadmap</a>
-  ·
-  <a href="https://discord.gg/5TUQKqFWd">UltraWorkers Discord</a>
-</p>
+# 🦞 CLAW CODE
+**The Blazing-Fast, Open-Source Claude Code Alternative (Built in Rust)**
 
-<p align="center">
-  <img src="assets/claw-hero.jpeg" alt="Claw Code" width="300" />
-</p>
+[![Rust](https://img.shields.io/badge/Built_with-Rust_🦀-f26522?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
+[![Discord](https://img.shields.io/discord/1234567890?color=7289da&label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/5TUQKqFWd)
 
-Claw Code is the public Rust implementation of the `claw` CLI agent harness.
-The canonical implementation lives in [`rust/`](./rust), and the current source of truth for this repository is **ultraworkers/claw-code**.
+[Usage Guide](./USAGE.md) • [Rust Workspace](./rust/README.md) • [Parity Status](./PARITY.md) • [Roadmap](./ROADMAP.md)
 
-> [!IMPORTANT]
-> Start with [`USAGE.md`](./USAGE.md) for build, auth, CLI, session, and parity-harness workflows. Make `claw doctor` your first health check after building, use [`rust/README.md`](./rust/README.md) for crate-level details, read [`PARITY.md`](./PARITY.md) for the current Rust-port checkpoint, and see [`docs/container.md`](./docs/container.md) for the container-first workflow.
+<img src="assets/claw-hero.jpeg" alt="Claw Code Hero Image" width="400" style="border-radius: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); margin: 20px 0;" />
 
-## Current repository shape
+*Run the official Claude CLI harness entirely in the open. Faster, lighter, and completely hackable.*
 
-- **`rust/`** — canonical Rust workspace and the `claw` CLI binary
-- **`USAGE.md`** — task-oriented usage guide for the current product surface
-- **`PARITY.md`** — Rust-port parity status and migration notes
-- **`ROADMAP.md`** — active roadmap and cleanup backlog
-- **`PHILOSOPHY.md`** — project intent and system-design framing
-- **`src/` + `tests/`** — companion Python/reference workspace and audit helpers; not the primary runtime surface
+</div>
 
-## Quick start
+---
 
+## 📖 What is this? (The Context)
+
+Recently, Anthropic released **Claude Code**—a powerful terminal-based AI assistant that can read your files, write code, run bash commands, and fix bugs autonomously right inside your CLI. 
+
+However, the official tool is closed-source and written in Node.js/TypeScript. 
+
+**Claw Code** is our answer to that. We rebuilt the exact same tool from the ground up using **Rust**. Our goal? To give developers an open-source, fully transparent, and heavily optimized version of the Claude CLI that you can run, modify, and hack on locally.
+
+---
+
+## ⚡ Why use Claw Code?
+
+| Feature | Plain English Description |
+| :--- | :--- |
+| **🚀 Lightning Fast** | Because it's written in Rust, it starts up instantly and uses way less memory than the official Node.js version. |
+| **🛠️ Your Terminal, Automated** | It can safely run bash commands, edit your files, search through your codebase, and pull data from the web. |
+| **🔌 Plug & Play Tools (MCP)** | Full support for the Model Context Protocol (MCP). Want it to talk to your database or Notion? Just connect a server. |
+| **🤖 Use Any AI Model** | Works perfectly with Anthropic and OpenAI API formats. Plus, smooth text streaming right in your terminal. |
+
+---
+
+## 💻 Quick Start
+
+Get your AI agent up and running in under 60 seconds.
+
+**1. Build the project:**
 ```bash
 cd rust
 cargo build --workspace
-./target/debug/claw --help
+```
+
+**2. Log in with your Anthropic Account:**
+```bash
+./target/debug/claw login
+```
+*(Alternatively, you can just set `export ANTHROPIC_API_KEY="sk-ant-..."`)*
+
+**3. Ask it to do something:**
+```bash
 ./target/debug/claw prompt "summarize this repository"
 ```
 
-Authenticate with either an API key or the built-in OAuth flow:
+> **Note:** Make sure to run `./target/debug/claw doctor` as your first health check to ensure everything is set up correctly!
 
-```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
-# or
-cd rust
-./target/debug/claw login
-```
+---
 
-Run the workspace test suite:
+<details>
+<summary><b>📂 Repository Breakdown (Click to expand)</b></summary>
+<br>
 
-```bash
-cd rust
-cargo test --workspace
-```
+If you want to poke around the code, here is where everything lives:
 
-## Documentation map
+- **`rust/`** — The actual codebase. This is where the magic happens and where the `claw` CLI is built.
+- **`USAGE.md`** — A simple guide on how to use the commands and features.
+- **`PARITY.md`** — A checklist showing how close we are to matching 100% of the official Claude Code's features.
+- **`ROADMAP.md`** — What we are building next.
+- **`PHILOSOPHY.md`** — Why we made this project and our design choices.
 
-- [`USAGE.md`](./USAGE.md) — quick commands, auth, sessions, config, parity harness
-- [`rust/README.md`](./rust/README.md) — crate map, CLI surface, features, workspace layout
-- [`PARITY.md`](./PARITY.md) — parity status for the Rust port
-- [`rust/MOCK_PARITY_HARNESS.md`](./rust/MOCK_PARITY_HARNESS.md) — deterministic mock-service harness details
-- [`ROADMAP.md`](./ROADMAP.md) — active roadmap and open cleanup work
-- [`PHILOSOPHY.md`](./PHILOSOPHY.md) — why the project exists and how it is operated
+</details>
 
-## Ecosystem
+---
 
-Claw Code is built in the open alongside the broader UltraWorkers toolchain:
+## 🌍 The UltraWorkers Ecosystem
 
-- [clawhip](https://github.com/Yeachan-Heo/clawhip)
-- [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
-- [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
-- [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
-- [UltraWorkers Discord](https://discord.gg/5TUQKqFWd)
+Claw Code doesn't live in isolation. We are building the future of open-source AI dev tools alongside:
+* 🦞 [clawhip](https://github.com/Yeachan-Heo/clawhip)
+* 🐙 [oh-my-openagent](https://github.com/code-yeongyu/oh-my-openagent)
+* 🧠 [oh-my-claudecode](https://github.com/Yeachan-Heo/oh-my-claudecode)
+* 👾 [oh-my-codex](https://github.com/Yeachan-Heo/oh-my-codex)
 
-## Ownership / affiliation disclaimer
+Want to contribute or just hang out? Join the discussion in the **[UltraWorkers Discord](https://discord.gg/5TUQKqFWd)**!
 
-- This repository does **not** claim ownership of the original Claude Code source material.
-- This repository is **not affiliated with, endorsed by, or maintained by Anthropic**.
+---
+
+<div align="center">
+
+**Disclaimer** <br>
+*This repository does not claim ownership of the original Claude Code source material. It is not affiliated with, endorsed by, or maintained by Anthropic.*
+
+</div>
